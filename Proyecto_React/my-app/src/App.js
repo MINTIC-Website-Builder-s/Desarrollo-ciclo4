@@ -1,5 +1,8 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from './assets/images/logo.svg';
+import './assets/css/App.css';
+
+//importar componentes
+import Componenteamt from './components/Componenteamt';
 
 function App() {
   return (
@@ -18,6 +21,10 @@ function App() {
           Mintic Ciclo 4
         </a>
       </header>
+      <section className="componentes">
+        <Componenteamt/>
+
+      </section>
     </div>
   );
 }
