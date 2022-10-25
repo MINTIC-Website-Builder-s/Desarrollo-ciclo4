@@ -1,3 +1,7 @@
+IMPORTANTE !!!
+MANTENER LOCALMENTE LA CARPETA "node_modules" YA QUE OCUPA MUCHO ESPACIO Y HACE LENTO LOS COMMITS Y CLONES ....
+ANTES DE USAR ESTE CODIGO EN VISUAL STUDIO CODE, SE DEBE AGREGAR LA CARPETA "node_modules" EN LA RAIZ DE LA CARPETA my-app
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
