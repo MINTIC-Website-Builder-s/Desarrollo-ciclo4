@@ -1,3 +1,66 @@
+
+
+//import React, { useState } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+//import { Navbar } from "./Navbar";
+//import { Navigation } from "./Navigation";
+
+import {HOME,LOGIN,LOGOUT,ADMIN,VENTAS,PRODUCTOS,CLIENTE,CARRITOCOMPRAS} from './config/roots/paths';
+
+import Home from './Componentes/Home';
+import Login from './Componentes/Login';
+import Admin from './Componentes/Admin';
+import Logout from './Componentes/Logout';
+import Ventas from './Componentes/Ventas';
+import Productos from './Componentes/Productos';
+import Cliente from './Componentes/Cliente';
+import CarritoCompras from './Componentes/CarritoCompras';
+//import { AuthContextProvider } from "./Contexts/outContexts";
+
+
+export default function App() {
+  return (
+    <BrowserRouter>
+<Routes>
+<Route path ={ HOME } element={<Home/> }/>
+<Route path ={LOGIN} element={<Login/> }/>
+<Route path ={ ADMIN } element={<Admin/> }/>
+<Route path ={ LOGOUT } element={<Logout/> }/>
+<Route path ={ VENTAS } element={<Ventas/> }/>
+<Route path ={ PRODUCTOS } element={<Productos/> }/>
+<Route path ={ CLIENTE } element={<Cliente/> }/>
+<Route path ={ CARRITOCOMPRAS } element={<CarritoCompras/> }/>
+</Routes>
+    </BrowserRouter>
+
+  );
+}
+
+
+
+
+
+
+
+
+
+/*
+const App = () => { 
+
+  const [rol, setRol] = useState('admin')
+  return (
+    <BrowserRouter>
+      <Navbar rol = {rol}/>
+      <Navigation rol = {rol}/> 
+    </BrowserRouter>
+
+  );
+};
+
+export default App;
+*/
+/*
+
 let nombre = [];
 let cantidad = [];
 let precioUnitario = []; 
@@ -71,7 +134,7 @@ else{
 // DESARROLLO DE FUNCIONES PARA CADA OPCION:
 /*
 Funcion para crear productos nuevos, solo puede acceder administrador
-*/ 
+
 function ingresarProducto(){
   nombre[counter] = prompt("Digite Producto");
   cantidad[counter] = prompt("Digite cantidad");
@@ -81,7 +144,7 @@ function ingresarProducto(){
 
 /*
   Funcion para visualizar productos, solo accede administrador
-*/ 
+
 
  function visualizarProductos(){
   let acumulador = "";
@@ -92,9 +155,11 @@ function ingresarProducto(){
                               "\n";
   }
   alert(acumulador);
+
+
 }
 
-
+*/
 
 
 
