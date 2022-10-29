@@ -1,20 +1,53 @@
 import { Component } from "react";
 
+import JsonData from '../data/productosPrueba.json'
 
-var heading = ['Id Producto', 'Nombre Producto','Descripcion Producto', 'Valor Unitario'];
+function Table({theadData, tbodyData}) {
+    return (
+        <table>
+            <thead>
+                <tr>
+                {theadData.map(heading => {
+                return <th key={heading}>{heading}</th>
+                })}
+            </tr>
+            </thead>
+            <tbody>
+                {tbodyData.map((row, index) => {
+                    return <tr key={index}>
+                        {theadData.map((key, index) => {
+                            return <td key={row[key]}>{row[key]}</td>
+                            
+                            
+                        })}
+                        
+                        <button>Comprar</button>
+            
+                </tr>;
+                })}
+            </tbody>
+        </table>
+    );
+    }
 
-//var body = conexion a un BD NOsq o sql o un arcgivo plano
+    export default function Cliente() {
+    
+    const getHeadings = () => {
+        return Object.keys(JsonData[0]);
+    }
+    return (
+        
+        <div className="container">
+        <h3>Productos Tienda Web</h3>
+        <br></br>
+        <Table theadData={getHeadings()} tbodyData={JsonData}/>
+        </div>
+    );
+    }
 
-var body =
-    [
-    ['PI-0001', 'Guantes', 'Unidades dependiendo de tallas','36'],
-    ['PI-0002', 'Barrilla', 'TAmaños de 6 metros y define las pulagas','40'],
-    ['PI-0003', 'Brea','Brea sintetica por 6 kg', '56'],
- 
-    ];
+      
 
-
-export  default function Cliente() {
+/* export  default function Cliente() {
 
     return (
         <>
@@ -47,8 +80,11 @@ class Table extends Component {
                 </thead>
                 <tbody>
                     {body.map(row => <TableRow row={row} />)}
+
+                    
                 </tbody>
             </table>
+            
 
 
             </div>
@@ -66,3 +102,4 @@ class TableRow extends Component {
         )
     }
 }
+*/
