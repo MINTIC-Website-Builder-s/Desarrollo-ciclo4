@@ -5,17 +5,15 @@ const router = express.Router()
 
 
 
-
-
-
+/*modelo producto*/
 
 const mongoose = require('mongoose')
 const eschema = mongoose.Schema
 
 const eschemaproducto = new eschema({
-    nombre: String,
-    stock: String,
-    descripcion: String,
+    nombre: {type: String, require:true, unique:true},
+    stock: {type: String, require:true},
+    descripcion:{type: String,require:true}, 
     valor: String,
     imagen: String,
     idproducto: String
@@ -23,17 +21,15 @@ const eschemaproducto = new eschema({
 const ModeloProducto = mongoose.model('producto', eschemaproducto)
 module.exports = router
 
-
-
 /*
 router.get ('/ejemplo', (req ,res)=>{
 res.end('carga de ruta ejemplo')
 
 })*/
 
-// metodo post agregar usuario 
-router.post('/agregarproducto', (req, res) => {
 
+/*Admin_metodo post agregar usuario*/
+router.post('/agregarproducto', (req, res) => {
     const nuevoproducto = new ModeloProducto({
         nombre: req.body.nombre,
         stock: req.body.stock,
@@ -49,14 +45,10 @@ router.post('/agregarproducto', (req, res) => {
         } else {
             res.send(err)
         }
-
     })
-
 })
 
-// metodo obetener todos los usuarios 
-
-
+   /* Admin_metodo obetener todos los usuarios*/ 
 router.get('/obtenerproducto', (req, res) => {
 
     ModeloProducto.find({}, function (docs, err) {
@@ -73,7 +65,7 @@ router.get('/obtenerproducto', (req, res) => {
 })
 
 
-/// obtener data de usuario 
+/* Admin_obtener data de usuario*/ 
 router.post('/obtenerdataproducto', (req, res) => {
 
     ModeloProducto.find({ idproducto: req.body.idproducto }, function (docs, err) {
@@ -90,7 +82,7 @@ router.post('/obtenerdataproducto', (req, res) => {
 })
 
 
-//actualiza datos 
+/*Admin_actualiza datos*/ 
 router.post('/actualizaproducto', (req, res) => {
 
     ModeloProducto.findOneAndUpdate({ idproducto: req.body.idproducto }, {
@@ -100,20 +92,11 @@ router.post('/actualizaproducto', (req, res) => {
         valor: req.body.valor,
         imagen: req.body.imagen,
 
-
-
-
     }, (err) => {
 
         if (!err) {
-
-
             res.send('Producto actualizado correctamente'
-
             )
-
-
-
         } else {
             res.send(err)
         }
@@ -123,8 +106,7 @@ router.post('/actualizaproducto', (req, res) => {
 })
 
 
-//borrarusuario
-
+/*Admin_borrarusuario*/
 router.post('/borrarproducto', (req, res) => {
 
     ModeloProducto.findOneAndDelete({ idproducto: req.body.idproducto }, (err) => {
@@ -134,8 +116,5 @@ router.post('/borrarproducto', (req, res) => {
         } else {
             res.send(err)
         }
-
-
     })
-
 })
