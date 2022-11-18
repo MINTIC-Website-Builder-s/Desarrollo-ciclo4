@@ -8,15 +8,16 @@ const router = express.Router()
 
 
 
+
 const mongoose = require('mongoose')
 const eschema = mongoose.Schema
 
 const eschemaproducto = new eschema({
     nombre: String,
-    stock:String,
-    descripcion:String,
-    valor:String,
-    imagen:String,
+    stock: String,
+    descripcion: String,
+    valor: String,
+    imagen: String,
     idproducto: String
 })
 const ModeloProducto = mongoose.model('producto', eschemaproducto)
@@ -37,8 +38,8 @@ router.post('/agregarproducto', (req, res) => {
         nombre: req.body.nombre,
         stock: req.body.stock,
         descripcion: req.body.descripcion,
-        valor:req.body.valor,
-        imagen:req.body.imagen,
+        valor: req.body.valor,
+        imagen: req.body.imagen,
         idproducto: req.body.idproducto
     })
     nuevoproducto.save(function (err) {
@@ -96,8 +97,8 @@ router.post('/actualizaproducto', (req, res) => {
         nombre: req.body.nombre,
         stock: req.body.stock,
         descripcion: req.body.descripcion,
-        valor:req.body.valor,
-        imagen:req.body.imagen,
+        valor: req.body.valor,
+        imagen: req.body.imagen,
 
 
 
@@ -105,7 +106,13 @@ router.post('/actualizaproducto', (req, res) => {
     }, (err) => {
 
         if (!err) {
-            res.send('producto actualizado correctamente')
+
+
+            res.send('Producto actualizado correctamente'
+
+            )
+
+
 
         } else {
             res.send(err)
@@ -120,7 +127,7 @@ router.post('/actualizaproducto', (req, res) => {
 
 router.post('/borrarproducto', (req, res) => {
 
-    ModeloProducto.findOneAndDelete({ idproducto: req.body.idproducto },(err)=> {
+    ModeloProducto.findOneAndDelete({ idproducto: req.body.idproducto }, (err) => {
         if (!err) {
             res.send('producto borrado correctamente')
 
